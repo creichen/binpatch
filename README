@@ -11,7 +11,7 @@ Alternatively, prints out a byte sequence.
 Compile
 -------
 
-cmake . && make
+cmake  -DCMAKE_BUILD_TYPE=Release . && make
 
 Test
 ----
