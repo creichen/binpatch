@@ -1,0 +1,46 @@
+Binary patching program
+-----------------------
+
+Takes a file and an offset into the file, and replaces, ORs, XORs, or
+ANDs a contiguous byte sequence at that offset within the file
+(in-place).  The byte sequence is taken as hex digit pairs, with no
+separator.
+
+Alternatively, prints out a byte sequence.
+
+Compile
+-------
+
+cmake . && make
+
+Test
+----
+
+make test
+
+Install
+-------
+
+make install
+
+
+Usage
+-----
+
+Modifying:
+
+  binpatch <filename> (<op> <offset> <change>)*
+
+Printing:
+
+  binpatch <filename> READ <offset> <length>
+
+Performs byte-level modifications in a file.
+op:      SET, XOR, AND, OR
+offset:  File offset (hex or decimal)
+change:  Hex string
+
+Example:
+
+  binpatch file.bin set 0 ac45 xor 0x400 ffffffffffffffffffffffff
+  binpatch file.bin read 0 0x20
